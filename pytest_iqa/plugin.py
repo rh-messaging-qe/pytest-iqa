@@ -5,16 +5,18 @@ Defines mandatory options and configuration that can be applied to all test suit
 import atexit
 import os
 
-from iqa_common.instance import IQAInstance
-from .fixtures import iqa
+from .instance import IQAInstance
+from .fixtures import *
 from .logger import get_logger
 
 # Default timeout settings
 CLIENTS_TIMEOUT = 60
+DEFAULT_LOG_FORMAT = '%(asctime)s [%(levelname)s] (%(pathname)s:%(lineno)s) - %(message)s'
+DEFAULT_LOG_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
 cleanup_file_list = []
 
 # linting
-(iqa)
+# (iqa)
 
 log = get_logger(__name__)
 
@@ -30,6 +32,27 @@ def pytest_addoption(parser):
                     required=True,
                     metavar='INVENTORY',
                     help='Inventory file to use')
+
+    # Default values for pytest.ini files (if absent)
+    parser.addini('log_level',
+                  default='WARNING',
+                  type=None,
+                  help='logging level used by the logging module')
+
+    parser.addini('log_format',
+                  default=DEFAULT_LOG_FORMAT,
+                  type=None,
+                  help='log format as used by the logging module.')
+
+    parser.addini('log_date_format',
+                  default=DEFAULT_LOG_DATE_FORMAT,
+                  type=None,
+                  help='log date format as used by the logging module.')
+
+    parser.addini('log_cli',
+                  default=True,
+                  type='bool',
+                  help='enable log display during test run (also known as "live logging").')
 
 
 def cleanup_files():

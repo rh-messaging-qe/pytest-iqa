@@ -14,6 +14,7 @@ def read(fname):
 
 setup(
     name='pytest-iqa',
+    packages=["pytest_iqa"],
     version='0.1.0',
     author='Dominik Lenoch, Fernando Giorgetti',
     author_email='dlenoch@redhat.com, fgiorget@redhat.com ',
@@ -22,8 +23,8 @@ setup(
     license='Apache Software License 2.0',
     url='https://github.com/rh-messaging-qe/iqa_common',
     description='IQA Messaging pytest integration plugin',
-    long_description=read('README.rst'),
-    py_modules=['pytest_iqa'],
+    long_description=read('README.md'),
+    py_modules=['pytest-iqa'],
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*',
     install_requires=['pytest>=3.9.3'],
     classifiers=[
@@ -45,7 +46,7 @@ setup(
     ],
     entry_points={
         'pytest11': [
-            'pytest_iqa = pytest_iqa.plugin',
+            'pytest-iqa = pytest_iqa.plugin',
         ],
     },
 )
