@@ -189,3 +189,12 @@ class IQAInstance:
         """
         return [component for component in self.routers
                 if not hostname or component.node.hostname == hostname]
+
+    def get_brokers(self, hostname: str = None) -> List[Broker]:
+        """
+        Get all broker instances on this node
+        :type hostname: optional hostname
+        :return:
+        """
+        return [component for component in self.brokers
+                if not hostname or component.node.hostname == hostname]
