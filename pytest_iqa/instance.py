@@ -7,6 +7,7 @@ from autologging import logged, traced
 from iqa_common.ansible.ansible_inventory import AnsibleInventory
 from iqa_common.executor import ExecutorFactory
 from messaging_abstract.component import *
+from messaging_components.node import NodeFactory
 from messaging_components.services import *
 from messaging_components.brokers import BrokerFactory
 from messaging_components.clients import ClientFactory
@@ -60,7 +61,7 @@ class IQAInstance:
             executor = ExecutorFactory.create_executor(exec_impl=cmp_exec, **cmp_vars)
 
             # Create the Node for current client
-            node = Node(hostname=cmp.name, executor=executor, ip=cmp_ip)
+            node = NodeFactory.create_node(hostname=cmp.name, executor=executor, ip=cmp_ip)
             nodes.append(node)
 
             # Now loading variables that are specific to each component
