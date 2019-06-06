@@ -15,7 +15,7 @@ def read(fname):
 setup(
     name='pytest_iqa',
     packages=["pytest_iqa"],
-    version='0.1.0',
+    version='0.1.1',
     author='Dominik Lenoch, Fernando Giorgetti',
     author_email='dlenoch@redhat.com, fgiorget@redhat.com ',
     maintainer='Dominik Lenoch',
